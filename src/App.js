@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import clsx from "clsx";
 import {
-  Button,
   AppBar,
   Card,
   CardActions,
@@ -13,7 +12,6 @@ import {
   Toolbar,
   Typography,
   Container,
-  Link,
   CssBaseline,
   Collapse,
   IconButton,
@@ -66,6 +64,10 @@ function App() {
   };
   const [inputWeight, setInputWeight] = useState(0);
 
+  const handleInput = (event) => {
+    setInputWeight(event.target.value);
+  };
+
   // Get JSON only once on load
   // Would upgrade this to use restful API (Async/await)
   useEffect(() => {
@@ -104,9 +106,8 @@ function App() {
               color="textSecondary"
               paragraph
             >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+              Some of the exquisite cheeses from our collection will have you
+              coming back for more.
             </Typography>
           </Container>
         </div>
@@ -150,8 +151,10 @@ function App() {
                       </Typography>
                       <Typography color="primary">
                         ${card.price} kg x
-                        <input type="weight" value={inputWeight} />={" "}
-                        {card.price * inputWeight}
+                        <input
+                          value={inputWeight}
+                          onChange={handleInput}
+                        />= {card.price * inputWeight}
                       </Typography>
                     </CardContent>
                   </Collapse>
