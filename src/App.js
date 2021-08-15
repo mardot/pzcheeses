@@ -1,26 +1,19 @@
 //import logo from './logo.svg';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import clsx from "clsx";
 import {
   AppBar,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
   Grid,
   Toolbar,
   Typography,
   Container,
   CssBaseline,
-  Collapse,
-  IconButton,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Cheese from "./Components/Cheese";
 
-//import "./App.css";
+// styles should be in seperate component
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -36,17 +29,6 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
-  card: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-  },
-  cardMedia: {
-    paddingTop: "56.25%", // 16:9
-  },
-  cardContent: {
-    flexGrow: 1,
-  },
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
@@ -57,25 +39,19 @@ function App() {
   // store cheese object form API
   const [cheeses, setCheeses] = useState([]);
 
-  // calculator drop down on card component
-  const [expanded, setExpanded] = useState(false);
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-  const [inputWeight, setInputWeight] = useState(0);
-
-  const handleInput = (event) => {
-    setInputWeight(event.target.value);
-  };
-
-  // Get JSON only once on load
-  // Would upgrade this to use restful API (Async/await)
+  // Axios json request should be own component
+  // concat and store cheese data their own objects
   useEffect(() => {
     axios.get("http://localhost:3001/cheeses").then((res) => {
       setCheeses(res.data);
     });
   }, []);
 
+  // each part of the page should be their own components
+  // - Menu
+  // - Main text (hero unit)
+  // - Cheeses grid
+  // - Login input to change cheeses
   const classes = useStyles();
   return (
     <div>
@@ -115,51 +91,7 @@ function App() {
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cheeses.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={card.image}
-                    title={card.title}
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {card.title}
-                    </Typography>
-                    <Typography>{card.description}</Typography>
-                    <Typography variant="h6">
-                      Price per Kg ${card.price}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <IconButton
-                      className={clsx(classes.expand, {
-                        [classes.expandOpen]: expanded,
-                      })}
-                      onClick={handleExpandClick}
-                      aria-expanded={expanded}
-                      aria-label="show more"
-                    >
-                      Calculate Price
-                      <ExpandMoreIcon />
-                    </IconButton>
-                  </CardActions>
-                  <Collapse in={expanded} timeout="auto" unmountOnExit>
-                    <CardContent>
-                      <Typography>
-                        Calculate the price for your order
-                      </Typography>
-                      <Typography color="primary">
-                        ${card.price} kg x
-                        <input
-                          value={inputWeight}
-                          onChange={handleInput}
-                        />= {card.price * inputWeight}
-                      </Typography>
-                    </CardContent>
-                  </Collapse>
-                </Card>
-              </Grid>
+              <Cheese key={card.id} card={card} />
             ))}
           </Grid>
         </Container>
