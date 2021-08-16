@@ -66,15 +66,4 @@ app.get("/api/cheeses", (request, response) => {
   response.json(cheeses);
 });
 
-// app.get("/api/cheeses/:id", (request, response) => {
-//   const id = Number(request.params.id);
-//   const cheese = cheeses.find((cheese) => cheese.id === id);
-
-//   if (cheese) {
-//     response.json(cheese);
-//   } else {
-//     response.status(404).end();
-//   }
-// });
-
 module.exports = app;
