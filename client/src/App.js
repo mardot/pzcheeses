@@ -1,6 +1,8 @@
 //import logo from './logo.svg';
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
+import cheeseService from "./services/Cheese";
+
 import {
   AppBar,
   Grid,
@@ -11,7 +13,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import Cheese from "./Components/Cheese";
+import Cheese from "./components/Cheese";
 
 // styles should be in seperate component
 const useStyles = makeStyles((theme) => ({
@@ -42,8 +44,9 @@ function App() {
   // Axios json request should be own component
   // concat and store cheese data their own objects
   useEffect(() => {
-    axios.get("http://localhost:3001/cheeses").then((res) => {
-      setCheeses(res.data);
+    cheeseService.getAll().then((initialCheeses) => {
+      setCheeses(initialCheeses);
+      console.log(initialCheeses);
     });
   }, []);
 

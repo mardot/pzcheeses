@@ -21,8 +21,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server -p 3001 --watch cheesedb.json"
+    "build:ui": "rm -rf build && npm run build --prod && cp -r build ../server "
+
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",

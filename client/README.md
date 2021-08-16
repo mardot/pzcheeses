@@ -4,15 +4,25 @@ I have included comments as to how I would build this app if time permitted
 
 ## Available Scripts
 
-In the project directory run:
+## For development
 
-### `npm start` && `npm run server`
+In client directory run
 
-JSON data is currently served by JSONserver
-If the data was to be edited I would serve the data either via express or a mongoDB via express
+### `npm start`
 
-App is run on http://localhost:3000
+In server directory run
 
-Json serves from http://localhost:3001/cheeses
+### `npm run dev`
 
-##
+## For production build run:
+
+### in the client directory `npm run ui:build`
+
+### build dir will copy from client to server dir
+
+### then
+
+### in the server directory `npm start`
+
+If time permitted I would link this to a mongoDB using mongoose
+Integrate a login function using JWT or OAUTH, to allow a user to login and add/delete/edit cheeses.
