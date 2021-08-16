@@ -1,5 +1,8 @@
 # PZ Cheeses
 
+Production build viewable from:
+https://pzcheeses.herokuapp.com/
+
 I have included comments as to how I would build this app if time permitted
 
 ## Available Scripts
