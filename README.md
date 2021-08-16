@@ -24,5 +24,7 @@ In server directory run
 
 ### in the server directory `npm start`
 
+## Additions/upgrades:
+
 If time permitted I would link this to a mongoDB using mongoose
 Integrate a login function using JWT or OAUTH, to allow a user to login and add/delete/edit cheeses.
