@@ -19,7 +19,7 @@ In server directory run
 
 ## For production build run:
 
-### in the client directory `npm run ui:build`
+### in the client directory `npm run build:ui`
 
 ### build dir will copy from client to server dir
 
@@ -29,5 +29,10 @@ In server directory run
 
 ## Additions/upgrades:
 
-If time permitted I would link this to a mongoDB using mongoose
-Integrate a login function using JWT or OAUTH, to allow a user to login and add/delete/edit cheeses.
+If time permitted:
+Markup: _ Incorporate a loading function
+_ link to mongoDB using mongoose
+_ Integrate a login function using JWT or OAUTH, to allow a user to login and add/delete/edit cheeses.
+_ Incorporate middleware for logging errors
+_ Add testing to check everything is working
+_ Use Restful API (async/await)
