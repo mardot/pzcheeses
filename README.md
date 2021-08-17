@@ -30,9 +30,9 @@ In server directory run
 ## Additions/upgrades:
 
 If time permitted:
-Markup: * Incorporate a loading function
- 		* link to mongoDB using mongoose
-		* Integrate a login function using JWT or OAUTH, to allow a user to login and add/delete/edit cheeses.
-		* Incorporate middleware for logging errors
-		* Add testing to check everything is working
-		* Use Restful API (async/await)
+* Incorporate a loading function
+* link to mongoDB using mongoose
+* Integrate a login function using JWT or OAUTH, to allow a user to login and add/delete/edit cheeses.
+* Incorporate middleware for logging errors
+* Add testing to check everything is working
+* Use Restful API (async/await)
